@@ -1,9 +1,10 @@
 CC=g++
-CFALGS= 
-SOURCES=piCalc.cpp 
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE = $(SOURCES)
+CCFLAGS= 
+# The files we are building:
+# piCalc.cpp piCalcDecimal.cpp
 
-all:
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+piCalcDecimal: piCalc
+	$(CC) $(CCFLAGS) $@.cpp -o $@
+piCalc:
+	$(CC) $(CCFLAGS) $@.cpp -o $@
 
