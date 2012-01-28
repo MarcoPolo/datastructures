@@ -3,8 +3,8 @@ CCFLAGS=
 # The files we are building:
 # piCalc.cpp piCalcDecimal.cpp
 
-piCalcDecimal: piCalc
+hw1aprob14: hw1aprob15
 	$(CC) $(CCFLAGS) $@.cpp -o $@
-piCalc:
+hw1aprob15:
 	$(CC) $(CCFLAGS) $@.cpp -o $@
 

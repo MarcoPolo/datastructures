@@ -1,0 +1,73 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+using namespace std;
+
+int* countDecimalPlaces(double number){
+  int count=0;
+  while (number != 0){
+    count++;
+    number = (number - (int)number);
+    cout << number <<endl;
+    number *= 10;
+  }
+
+  cout << "cnt function says" << count << endl;
+  return &count;
+}
+
+int main(){
+  /*
+    14. Write a C++ program to calculate the mathematical constant of PI: 
+
+    (a) Imagine a circle, whose area is given by: Area=PI*R^2
+
+    (b) Now imagine that you divide the circle exactly into 4 quadrants. 
+
+    (c) The area of one quadrant is hence: Area=0.25*PI* R^2
+
+    (d) Now let us set the radius to be R=1; 
+
+    (e) The equation hence becomes: Area=0.25*PI 
+
+    (f) So we can simply say: PI = Area*4
+  */
+
+  srand( time(NULL) );
+
+  int decimalPrecision(3);
+  cin >> decimalPrecision;
+
+  //lets amp up the precision of cout
+  cout.precision(100);
+
+  double pi(3);
+  int N=pow(10,decimalPrecision);
+  int pointcount(0);
+  int decimalPrecisionPower10 = pow(10,decimalPrecision);
+  cout << pi << endl;
+
+  //lets iterate over some really big number
+
+  for(int i=0; i<N;i++){
+    double x = rand()/(double)RAND_MAX;
+    double y = rand()/(double)RAND_MAX;
+
+    //now lets calculate to see if the number is actually falls within the circle
+    if ( sqrt(x*x + y*y)  < 1 ){
+      pointcount++;
+    }
+
+    pi  = (double)pointcount/N*4;
+    cout << pi << endl;
+
+  };
+  cout << "Number of points within the circle: " << pointcount << endl ;
+  cout << "Number of total Points: " << N << endl;
+  cout << "pi: " <<(double)pointcount/N*(double)4 << endl;
+
+
+
+  return 0;
+}
