@@ -2,3 +2,99 @@
 | Marco Munizaga                  |
 | HW1a                            |
 +---------------------------------+
+
+1) p references the memory location of a so it will output the value of a which is 3
+
+2) Seg fault, you are giving the value of a as an address for p
+
+3) you change the values of a and b by using a pointer p to them, so the output will be 4 3 
+
+4) you pass the memory location of a to p then to q then you increment the value at q by 5 which is also the value at p which returns 8
+
+5) *p is the exact same value as a so it returns 1
+
+6) should print Fred Jones since it references the memory location of s
+
+7) type error from trying to convert a string* to and int*
+
+8) First the compiler will complain the function isn't a valid type but if you define it as one then it will output 10
+
+9) you change the value of a to become the value of b. the output it 44 
+
+10) The output will be the memory location of the variable a
+
+11) The output will be the value of a + 1 so it comes out to 5
+
+12) This is risky it will output the value of whatever is in the next 4 bytes of memory
+
+13) b becomes the character code 52 which is 4
+
+14-15 ) cpp files
+
+16) you initialize a new integer with ptr_a being the reference
+    output:     
+                3 3
+                3 9
+                3 3
+                3 3
+                0xBADCOFFEE(aka address at ptr_a) 3
+
+   Checked! 
+
+17) a) Done is never changed so it results in a nasty infinite loop that just keeps allocating at 10 MB at a time
+    b) it runs until 16 before it tries to go after my slow swap space, I terminated before it threw an error, it should crash by itself when their is no more memory it can use
+    c) Done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
