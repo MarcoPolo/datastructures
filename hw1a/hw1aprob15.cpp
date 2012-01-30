@@ -34,7 +34,7 @@ void calcPi(int decimalPrecision){
     double y = rand()/(double)RAND_MAX;
 
     //now lets calculate to see if the number is actually falls within the circle
-    if ( sqrt(x*x + y*y)  < 1 ){
+    if ( sqrt(x*x + y*y)  <= 1 ){
       pointcount++;
     }
   }

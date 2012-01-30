@@ -7,23 +7,6 @@ using namespace std;
 void calcPi(int N);
 
 int main(){
-  /*
-    14. Write a C++ program to calculate the mathematical constant of PI: 
-
-    (a) Imagine a circle, whose area is given by: Area=PI*R^2
-
-    (b) Now imagine that you divide the circle exactly into 4 quadrants. 
-
-    (c) The area of one quadrant is hence: Area=0.25*PI* R^2
-
-    (d) Now let us set the radius to be R=1; 
-
-    (e) The equation hence becomes: Area=0.25*PI 
-
-    (f) So we can simply say: PI = Area*4
-  */
-
-
   calcPi(10e3);
   calcPi(10e4);
   calcPi(10e5);
@@ -48,7 +31,7 @@ void calcPi(int N){
     double y = rand()/(double)RAND_MAX;
 
     //now lets calculate to see if the number is actually falls within the circle
-    if ( sqrt(x*x + y*y)  < 1 ){
+    if ( sqrt(x*x + y*y)  <= 1 ){
       pointcount++;
     }
   }
