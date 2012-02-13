@@ -1,0 +1,4 @@
+rm ./hw1bsrc/*
+cp ./hw1b.* ./hw1bsrc/
+cp ./Makefile ./hw1bsrc/
+tar -cvf hw1bsrc.tar hw1bsrc/
