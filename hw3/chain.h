@@ -210,17 +210,22 @@ void chain<T>::meld(chain a, chain b)
 {// meld two list into one
     //first lets find which of the two chains is smaller
     int smallSize = a.size() < b.size() ? a.size() : b.size();
-    listSize = a.size() + b.size();
     chainNode <T> *currentNode;
     chainNode <T> *nextNode;
-    //chainNode <T> *firstNode;
-    //firstNode->element =  a.get(0);
-    //firstNode->next = nextNode;
-    //this->firstNode = firstNode;
-    //firstNode = currentNode;
     
+    //update the listSize
+    listSize = a.size()+b.size();
+
+    //check if both are empty
+    if (b.size() == 0 && a.size() == 0){
+        return;
+    }
+
+    //check to see if either is empty
     if (a.size() == 0) {
-        for (int i = 0; i < b.size(); i++){
+        firstNode = new chainNode<T>(b.get(0), 0);
+        nextNode = firstNode;
+        for (int i = 1; i < b.size(); i++){
             currentNode = new chainNode<T>(b.get(i), 0);
             nextNode->next = currentNode;
             nextNode = nextNode->next;
@@ -228,7 +233,9 @@ void chain<T>::meld(chain a, chain b)
         return;
     }
     if (b.size() == 0) {
-        for (int i = 0; i < a.size(); i++){
+        firstNode = new chainNode<T>(a.get(0), 0);
+        nextNode = firstNode;
+        for (int i = 1; i < a.size(); i++){
             currentNode = new chainNode<T>(a.get(i), 0);
             nextNode->next = currentNode;
             nextNode = nextNode->next;
@@ -236,14 +243,14 @@ void chain<T>::meld(chain a, chain b)
         return;
     }
      
+    //lets start melding them together
     firstNode = new chainNode<T>(a.get(0), 0);
     currentNode = new chainNode<T>(b.get(0), 0);
     firstNode->next=currentNode;
     nextNode = firstNode->next;
     
-    cout << "the size of this is " << smallSize << endl;
+    //lets only alternate for the largets common length (aka smaller size of the two)
     for (int i = 1; i < smallSize; i++) {
-        cout << "the index i is " << i << endl;
         currentNode = new chainNode<T>(a.get(i), 0);
         nextNode->next = currentNode;
         nextNode = nextNode->next;
@@ -272,15 +279,11 @@ template<class T>
 void chain<T>::split(chain& a, chain& b)
 {// split one list into two
 
-    cout << " listSize is " << listSize << endl;
     int originalSize = listSize;
     for (int i = 0; i < originalSize; i++) {
-        cout << " i is " << i << endl;
         if ( i%2 == 0 ){
-            cout << this->get(0) << endl;
             a.insert(a.size(),this->get(i));
         }else{
-            cout << this->get(0) << endl;
             b.insert(b.size(),this->get(i));
         }
     }
@@ -288,11 +291,8 @@ void chain<T>::split(chain& a, chain& b)
 template<class T>
 void chain<T>::reverse()
 {// lets reverse the chain
-    for (int i = 0; i < listSize; i++) {
+    for (int i = 0; i < (int)listSize/2; i++) {
         this->swapNode(this->operator[](i), this->operator[](this->size()-(1+i)) );
-        cout << "this is " << this[0];
-        cout << endl;
-        if(this->operator[](i)->next == this->operator[](this->size()-(1+i)) ) {cout << "we are done here" << endl; break;}
     }
 }
 

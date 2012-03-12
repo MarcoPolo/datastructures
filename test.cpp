@@ -1,17 +1,27 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
-int main(int argc, const char *argv[])
+class Vect {
+    private:
+        int vectSize ;
+    public:
+        int* theVect ;
+        Vect(int size = 10)
+        {
+            vectSize = size ;
+            theVect = new int[size] ;
+        }
+        string print()
+        {
+            cout << theVect[0] ;
+        }
+        ~Vect()
+        { delete [] theVect ;}
+} ;
+int main()
 {
-
-    string a[3];
-    for (int i = 0; i < 3; i++) {
-        cin >> a[i];
-    }
-    for (int i = 0; i < 3; i++) {
-        cout << a[i];
-    }
-
-    return 0;
+    Vect a(100) ;
+    Vect c ;
+    c = a ;
+    cout << c.print() ;
 }

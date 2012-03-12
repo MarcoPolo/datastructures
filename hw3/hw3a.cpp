@@ -3,7 +3,6 @@
 
 int main(int argc, const char *argv[])
 {
-    cout << "lolz" << endl;
 
     chain<int> a ;
     chain<int> b ;
@@ -24,23 +23,37 @@ int main(int argc, const char *argv[])
     cout << "b is: ";
     b.output(cout);
     cout << endl;
-    cout << " a at index is " << a.size();
-    cout << endl;
     
 
 
-    c.meld(a,b) ;
-
-
+    //lets show how we meld two objects together
+    //the melded chain is stored in the c chain
+    c.meld(a,b);
 
     cout << "c is: ";
     c.output(cout);
     cout << endl;
+
+    //lets reverse the c chain from the member methods
     c.reverse();
     cout << "c is now: ";
     c.output(cout);
     cout << endl;
     
+    //we are going to reverse c again using nonmember methods
+    //this should re reverse c to get what we originally had
+    for (int i = 0; i < (int)c.size()/2; i++) {
+        int temp=c.get(i);
+        c.erase(i);
+        c.insert(i,c.get(c.size()-(1+i)));
+        c.erase(c.size()-(1+i));
+        c.insert(c.size()-(i),temp);
+    }
+    cout << "c is back to: ";
+    c.output(cout);
+    cout << endl;
+
+    //now lets split the chain c into two empty chains d and e.
     c.split(d,e);
     
     cout << "d is: ";
@@ -51,18 +64,6 @@ int main(int argc, const char *argv[])
     cout << endl;
     
 
-    //we are going to reverse c
-    for (int i = 0; i < c.size()/2; i++) {
-        this->swapNode(this->operator[](i), this->operator[](this->size()-(1+i)) );
-        int temp=c.get(i);
-        c.erase(i);
-        c.insert(0,c.get(c.size-(1+i)));
-        c.erase(c.size()-1);
-        c.insert(c.size(),temp);
-    }
-    cout << "c is now: ";
-    c.output(cout);
-    cout << endl;
     
 
 

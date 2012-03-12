@@ -1,0 +1,6 @@
+rm ./hw3asrc/*
+cp ./hw3a.* ./hw3asrc/
+cp ./chain* ./hw3asrc/
+rm ./hw3asrc/chain.cpp
+tar -cvf hw1bsrc.tar hw1bsrc/
+mv hw3asrc.tar hw3a.tar
