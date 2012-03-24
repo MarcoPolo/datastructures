@@ -1,0 +1,19 @@
+15.
+    a) In chain.h
+    b) The time complexity is above listSize/2, the reason being that when you access/delete a chainNode that isn't the firstNode you need to traverse the node chain until you find the right node. The space complexity is listSize/2 * size of an int, this is because a temporary integer is made.
+    c) Check hw3a.cpp
+
+16.
+    a) In chain.h
+    b) The time complexity is above listSize/2, the reason being that when you access/delete a chainNode that isn't the firstNode you need to traverse the node chain until you find the right node. The space complexity is a bit bigger than Q15 because you create a new chainNode rather than reuse the chainNode. You do, however, delete the unused chainNode.
+    c) Check hw3a.cpp
+
+18.
+    a) In chain.h
+    b) The code only iterates linearly with the number of chainNodes the input chains have.
+    c) Check hw3a.cpp
+    
+
+22.
+    Check hw3a.cpp for the execution and chain.h for the chain<T>::split method
+
