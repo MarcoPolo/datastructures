@@ -3,30 +3,14 @@
 #include<iostream>
 
 
-bool sortRows(Node* first, Node* second){
-    if (first->row == second->row){
-        return first->col < second->col;
-    
-    }else{
-        return first->row < second->row;
-    }
-}
 
-bool sortCols(Node* first, Node* second){
-    if (first->col == second->col){
-        return first->row < second->row;
-    
-    }else{
-        return first->col < second->col;
-    }
-}
-
-ostream& operator<<(ostream& out, olsm& obj){
+template <class T>
+ostream& operator<<(ostream& out, olsm<T>& obj){
 
     cout << obj.getRowSize() << endl;
     cout << obj.getColSize() << endl;
     cout << obj.getSize() << endl;
-    Node* node = obj.getHeader();
+    Node<T>* node = obj.getHeader();
     node = node->right;
     while (node != obj.getHeader()){
         cout << node->row;
@@ -40,11 +24,11 @@ ostream& operator<<(ostream& out, olsm& obj){
     }
     return out;
 }
-
-istream& operator>>(istream& in, olsm& obj){
-    list<Node*> listicle;
-    list<Node*>::iterator it;
-    Node* temp;
+template <class T>
+istream& operator>>(istream& in, olsm<T>& obj){
+    list<Node<T>*> listicle;
+    typename list<Node<T>*>::iterator it;
+    Node<T>* temp;
     int rows, cols, size, row, col, val;
     //lets first get the row, cols, and size form the input
     in >> rows;
@@ -62,10 +46,10 @@ istream& operator>>(istream& in, olsm& obj){
         in >> row;
         in >> col;
         in >> size;
-        temp = new Node(row,col,size);
+        temp = new Node<T>(row,col,size);
         listicle.push_back(temp);
     }
-    listicle.sort(sortRows);//lets set up a sorting of the nodes byu rows so we can fill the right linked list
+    listicle.sort(olsm<T>::sortRows);//lets set up a sorting of the nodes byu rows so we can fill the right linked list
 
     temp = obj.getHeader();
     for(it=listicle.begin(); it!=listicle.end(); it++){
@@ -73,7 +57,7 @@ istream& operator>>(istream& in, olsm& obj){
         temp = temp->right;
     }
     temp->right=obj.getHeader();
-    listicle.sort(sortCols);
+    listicle.sort(olsm<T>::sortCols);
 
     //lets get th header node again and we will repeat the same proccess as above
     temp = temp->right;
