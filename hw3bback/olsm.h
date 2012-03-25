@@ -2,20 +2,20 @@
 #define olsm_H_
 
 #include <iostream>
-#include <list>
 
 
 using namespace std;
 
 class Node{
+    private:
     public:
         Node(){};
         Node(int row, int col, int val, Node* down=NULL, Node* right=NULL){
-            this->row=row;
-            this->col=col;
-            this->val=val;
-            this->down=down;
-            this->right=right;
+            this.row=row;
+            this.col=col;
+            this.val=val;
+            this.down=down;
+            this.right=right;
         }
         int row;
         int col;
@@ -23,7 +23,7 @@ class Node{
         ~Node(){};
         Node* down;
         Node* right;
-};
+}
 
 class olsm{
     private:
@@ -49,32 +49,34 @@ class olsm{
             }
         }
         int setInitials(int rows, int cols, int size){
-            this->rows=rows;
-            this->cols=cols;
-            this->size=size;
+            this.rows=rows;
+            this.cols=cols;
+            this.size=size;
         }
-        int getRowSize(){return rows;};
+        int getRowSize(){return row;};
         int getColSize(){return cols;};
         int getSize(){return size;};
-        Node* getHeader(){return header;};
+        Node* getHeader(){return Header;};
+        int printMatrix();
         
-    void transpose(olsm& c){
-        list<Node*> listicle;
 
-        Node* node = header;
-        Node* nextNode = node->right;
-        Node* tempNode;
-        Node* previousNode = c.getHeader();
-        while (nextNode != header){
-            tempNode = new Node(nextNode->col, nextNode->row, nextNode->val);
-            previousNode->right = tempNode;
-            previousNode = previousNode->right;
-            nextNode = nextNode->right;
+        
+}
 
-        }
+void transpose(olsm& c){
+    list<Node*> listicle;
+
+    Node* node = headerNode;
+    Node* nextNode = node->right;
+    Node* tempNode;
+    Node* previousNode = olsm.getHeader();
+    while (nextNode != headerNode){
+        tempNode = new Node(nextNode.col, nextNode.row, nextNode.val);
+        previousNode->right = tempNode;
+        previouNode = previousNode->right;
+        nextNode = nextNode->right;
+
     }
 
-        
-};
-
+}
 #endif

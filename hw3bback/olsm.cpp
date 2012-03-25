@@ -17,27 +17,13 @@ bool sortCols(Node* first, Node* second){
         return first->row < second->row;
     
     }else{
-        return first->col < second->col;
+        return first->row < second->row;
     }
 }
 
-ostream& operator<<(ostream& out, olsm& obj){
+ostream& operator<<(ostream& out, olsm obj){
 
-    cout << obj.getRowSize() << endl;
-    cout << obj.getColSize() << endl;
-    cout << obj.getSize() << endl;
-    Node* node = obj.getHeader();
-    node = node->right;
-    while (node != obj.getHeader()){
-        cout << node->row;
-        cout << " ";
-        cout << node->col;
-        cout << " ";
-        cout << node->val;
-        cout << " ";
-        cout << endl;
-        node = node->right;
-    }
+    obj.printMatrix();
     return out;
 }
 

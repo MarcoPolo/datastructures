@@ -1,43 +1,30 @@
+
 #include "olsm.h"
 #include<list>
 #include<iostream>
 
 
-bool sortRows(Node* first, Node* second){
+bool sortbyrow(Node* first, node* second){
     if (first->row == second->row){
-        return first->col < second->col;
+        return first->getcol() < second->getcol();
     
     }else{
-        return first->row < second->row;
+        return first->getrow() < second->getrow();
     }
 }
 
-bool sortCols(Node* first, Node* second){
+bool sortbycol(Node* first, node* second){
     if (first->col == second->col){
-        return first->row < second->row;
+        return first->getrow() < second->getrow();
     
     }else{
-        return first->col < second->col;
+        return first->getrow() < second->getrow();
     }
 }
 
-ostream& operator<<(ostream& out, olsm& obj){
+ostream& operator<<(ostream& out, olsm obj){
 
-    cout << obj.getRowSize() << endl;
-    cout << obj.getColSize() << endl;
-    cout << obj.getSize() << endl;
-    Node* node = obj.getHeader();
-    node = node->right;
-    while (node != obj.getHeader()){
-        cout << node->row;
-        cout << " ";
-        cout << node->col;
-        cout << " ";
-        cout << node->val;
-        cout << " ";
-        cout << endl;
-        node = node->right;
-    }
+    obj.printMatrix();
     return out;
 }
 
@@ -62,7 +49,7 @@ istream& operator>>(istream& in, olsm& obj){
         in >> row;
         in >> col;
         in >> size;
-        temp = new Node(row,col,size);
+        Node *temp = new Node(row,col,size);
         listicle.push_back(temp);
     }
     listicle.sort(sortRows);//lets set up a sorting of the nodes byu rows so we can fill the right linked list
@@ -77,10 +64,13 @@ istream& operator>>(istream& in, olsm& obj){
 
     //lets get th header node again and we will repeat the same proccess as above
     temp = temp->right;
-    //we are linking the nodes column wise
     for(it=listicle.begin();it!=listicle.end();it++){
         temp->down = (*it);
         temp = temp->down;
     }
     temp->down = obj.getHeader();
+
+
+    temp
+
 }
