@@ -7,7 +7,6 @@ int main(int argc, const char *argv[])
 {
     
 
-    cout << "starting woo" << endl;
     ifstream file;
     file.open("hw3bin1");
     if(!file) cout << "error reading file";
@@ -27,15 +26,12 @@ int main(int argc, const char *argv[])
     lol.transpose(lolT);
     lolT.add(lol2, lolADD);
 
-    cout << "this is origin" << endl;
-    cout << lol <<endl;
-    cout << "this is origin" << endl;
-    cout << lol2 <<endl;
-    cout << "this is transpose" << endl;
-    cout << lolT;
-    cout << endl;
-    cout << "this is the addition" << endl;
     cout << lolADD;
+
+    ofstream outFile;
+    outFile.open("hw3bout");
+    outFile << lolADD;
+    outFile.close();
     
     
     return 0;
