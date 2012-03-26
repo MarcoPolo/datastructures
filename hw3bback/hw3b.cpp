@@ -7,7 +7,7 @@ int main(int argc, const char *argv[])
 {
     
 
-    cout << "starting" << endl;
+    cout << "starting woo" << endl;
     ifstream file;
     file.open("hw3bin1");
     if(!file) cout << "error reading file";

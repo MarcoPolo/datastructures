@@ -1,0 +1,13 @@
+HW2b:
+
+
+b) for any n>2 we have:
+fib(n) = fib(n-1) + fib(n-2) 
+fib(n-1) = fib(n-2) + fib(n-3)
+fib(n-2) = fib(n-3) + fib(n-4)
+and so on...
+
+the algorithm trace above shows how the same fibonacci numbers are computed more than one time
+
+
+e)
