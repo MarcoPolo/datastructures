@@ -18,8 +18,15 @@ class hw5{
         }
 
         void read(){ //this function will read the crap from the input
-            cin >> vertices;
-            cin >> edges;
+            ifstream inFile;
+            inFile.open("hw5in");
+            if (!inFile) {
+                cout << "There was an error opening the file";
+                return;
+            }
+            
+            inFile >> vertices;
+            inFile >> edges;
 
             //lets build the outer array first
             for (int i = 0; i < vertices; i++) {
@@ -33,8 +40,8 @@ class hw5{
             for (int i = 0; i < edges; i++) {
                 int startNode; 
                 int endNode; 
-                cin >> startNode;
-                cin >> endNode;
+                inFile >> startNode;
+                inFile >> endNode;
                 nodes[startNode-1].push_back(endNode);
                 nodes[endNode-1].push_back(startNode);
             }
